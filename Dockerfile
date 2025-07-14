@@ -15,10 +15,15 @@ RUN apk update && apk add --no-cache \
     chromium
 
 COPY package.json yarn.lock ./
-RUN yarn install --pure-lockfile && yarn add sharp --ignore-engines
+
+RUN yarn install --pure-lockfile && \
+    yarn add sharp --ignore-engines
 
 COPY . .
-RUN yarn build
+
+# تثبيت تعريفات jest لحل الخطأ في البناء
+RUN yarn add -D @types/jest && \
+    yarn build
 
 EXPOSE 21465
 
