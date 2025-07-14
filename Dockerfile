@@ -15,7 +15,7 @@ RUN apk update && apk add --no-cache \
     chromium
 
 COPY package.json yarn.lock ./
-RUN yarn install --pure-lockfile && yarn add sharp --ignore-engines
+RUN yarn install --production=false --pure-lockfile && yarn add sharp --ignore-engines
 
 COPY . .
 RUN yarn build
