@@ -21,7 +21,6 @@ RUN yarn install --pure-lockfile && \
 
 COPY . .
 
-# تثبيت تعريفات jest لحل الخطأ في البناء
 RUN yarn add -D @types/jest && \
     yarn build
 
